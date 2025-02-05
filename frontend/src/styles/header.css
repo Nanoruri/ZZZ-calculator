@@ -1,8 +1,18 @@
 .header {
-    background-color: #ffffff; /* 파란색 */
+    background-color: #ffffff;
     color: black;
     text-align: center;
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 글자와 이미지 간격 */
+    margin-top: 5vh; /* 상단 여백 */
+}
+
+.header-logo {
+    width: 40px; /* 이미지 크기 */
+    height: 40px;
 }
