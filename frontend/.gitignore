@@ -35,4 +35,6 @@ psd
 thumb
 sketch
 
+#리액트 참고용 디렉토리
+/src/yeahJae/
 # End of https://www.toptal.com/developers/gitignore/api/react,java
