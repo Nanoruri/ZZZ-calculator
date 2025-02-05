@@ -1,0 +1,8 @@
+.header {
+    background-color: #ffffff; /* 파란색 */
+    color: black;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
