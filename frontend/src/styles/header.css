@@ -10,6 +10,7 @@
     justify-content: center;
     gap: 10px; /* 글자와 이미지 간격 */
     margin-top: 5vh; /* 상단 여백 */
+    cursor: pointer;  /* 손 모양 커서를 추가 */
 }
 
 .header-logo {

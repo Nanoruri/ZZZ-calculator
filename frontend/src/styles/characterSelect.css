@@ -4,6 +4,7 @@
     gap: 16px;
     padding: 16px;
     max-width: 600px;
+    cursor: pointer;  /* 손 모양 커서를 추가 */
 }
 
 .character-card {
