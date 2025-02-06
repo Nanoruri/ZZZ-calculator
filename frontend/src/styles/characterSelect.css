@@ -1,0 +1,33 @@
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    max-width: 600px;
+    cursor: pointer;  /* 손 모양 커서를 추가 */
+}
+
+.character-card {
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f8f9fa;
+    transition: background 0.3s ease;
+}
+
+.character-card:hover {
+    background-color: #e2e8f0;
+}
+
+.character-image {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.character-name {
+    margin-top: 8px;
+    font-weight: bold;
+}

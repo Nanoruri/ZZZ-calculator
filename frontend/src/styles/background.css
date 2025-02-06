@@ -1,0 +1,9 @@
+.background {
+    position: fixed; /* 화면 전체를 고정 */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 전체 너비 */
+    height: 100vh; /* 전체 높이 */
+    background: linear-gradient(to bottom right, #000000, #696969);
+    z-index: -1;
+}
