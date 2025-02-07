@@ -59,11 +59,9 @@ public class ApiController {
 
     @DeleteMapping("{name}")
     public ResponseEntity<Agent> deleteAgent(@PathVariable String name) {
-        if (name == null || name.isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }
-        Agent agent = agentService.deleteAgent(name);
 
-        return ResponseEntity.ok(agent);
+        agentService.deleteAgent(name);
+
+        return ResponseEntity.noContent().build();
     }
 }

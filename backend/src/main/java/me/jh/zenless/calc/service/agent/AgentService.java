@@ -52,12 +52,8 @@ public class AgentService {
         return agentRepository.findAll();
     }
 
-    public Agent deleteAgent(String name) {
-        Agent agent = agentRepository.findById(name).orElse(null);
-        if (agent != null) {
-            agentRepository.delete(agent);
-        }
-        return agent;
+    public void deleteAgent(String name) {
+        agentRepository.findById(name).ifPresent(agentRepository::delete);
     }
 
     public boolean updateAgent(Agent updateAgent) {
