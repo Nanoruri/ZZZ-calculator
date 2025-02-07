@@ -3,6 +3,7 @@ package me.jh.zenless.calc.service.agent;
 import me.jh.zenless.calc.entity.ElementType;
 import me.jh.zenless.calc.entity.RoleType;
 import me.jh.zenless.calc.entity.agent.Agent;
+import me.jh.zenless.calc.entity.agent.builder.AgentStep;
 import me.jh.zenless.calc.repository.agent.AgentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,18 @@ public class AgentService {
 
 
     public boolean createAgent(Agent agent) {
-        Agent newAgent = new Agent();
-        newAgent.setName(agent.getName());
-        newAgent.setRole(convertRoleType(agent.getRole().name()));
-        newAgent.setElementType(convertElementType(agent.getElementType().name()));
-        newAgent.setCoreSkill(agent.getCoreSkill());
-        newAgent.setSkills(agent.getSkills());
+        RoleType convertedRole = convertRoleType(agent.getRole().name());
+        ElementType convertedElementType = convertElementType(agent.getElementType().name());
+
+        Agent newAgent = AgentStep.builder()
+                .name(agent.getName())
+                .role(convertedRole)
+                .elementType(convertedElementType)
+                .level(agent.getLevel())
+                .exp(agent.getExp())
+                .coreSkill(agent.getCoreSkill())
+                .skills(agent.getSkills())
+                .build();
 
         agentRepository.save(newAgent);
 
