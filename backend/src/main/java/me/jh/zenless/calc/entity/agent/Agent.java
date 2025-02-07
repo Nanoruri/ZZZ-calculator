@@ -41,6 +41,7 @@ public class Agent {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CORE_SKILL_ID", unique = true)
+    @JsonManagedReference("agent-coreSkill")
     private CoreSkill coreSkill; // 코어 스킬
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

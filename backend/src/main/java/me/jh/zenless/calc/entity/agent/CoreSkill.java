@@ -1,5 +1,6 @@
 package me.jh.zenless.calc.entity.agent;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,6 @@ public class CoreSkill {
     private String discription; // 핵심 스킬 설명
 
     @OneToOne(mappedBy = "coreSkill")
+    @JsonBackReference("agent-coreSkill")
     private Agent agent; // 코어 스킬을 가지고 있는 캐릭터
 }
