@@ -26,6 +26,7 @@ public class Skill {
     private String name;
 
     @Column(name = "SKILL_LEVEL")
+    //TODO : 음수는 안되게, 최대레벨 제한(11) 걸어야함
     private int level = 1; // 레벨
 
     @Column(name = "SKILL_MAX_LEVEL")
