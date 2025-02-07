@@ -56,6 +56,7 @@ public class AgentService {
     public boolean updateAgent(Agent updateAgent) {
         try {
             agentRepository.findById(updateAgent.getName()).ifPresentOrElse(agent -> {
+                agent.setName(updateAgent.getName());
                 agent.setRole(convertRoleType(updateAgent.getRole().name()));
                 agent.setElementType(convertElementType(updateAgent.getElementType().name()));
                 agent.setCoreSkill(updateAgent.getCoreSkill());
