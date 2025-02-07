@@ -33,12 +33,11 @@ public class ApiController {
 
     @GetMapping("{name}")
     public ResponseEntity<Agent> getAgent(@PathVariable String name) {
-        if (name == null || name.isEmpty()) {
+        if (agentService.getAgent(name) == null) {
             return ResponseEntity.badRequest().build();
         }
-        Agent agent = agentService.getAgent(name);
 
-        return ResponseEntity.ok(agent);
+        return ResponseEntity.ok(agentService.getAgent(name));
     }
 
     @GetMapping
