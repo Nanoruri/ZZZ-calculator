@@ -15,15 +15,12 @@ import javax.persistence.*;
 @Table(name = "CORE_SKILL")
 public class CoreSkill {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CORE_SKILL_NO")
-    private long seq; // 코어 스킬 번호
-
     @Id
     @Column(name = "CORE_SKILL_ID", unique = true)
     private String name;
 
     @Column(name = "CORE_SKILL_LEVEL")
+    //TODO : 음수는 안되게, 최대레벨 제한(6) 걸어야함
     private int level = 1; // 레벨
 
     @Column(name = "CORE_SKILL_DISCRIPTION")

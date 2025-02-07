@@ -19,11 +19,6 @@ import java.util.List;
 @Table(name = "AGENT")
 public class Agent {
 
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AGENT_NO")
-    private long seq; // 캐릭터 번호
-
     @Id
     @Column(name = "AGENT_ID", unique = true)
     private String name;// 이름
@@ -37,6 +32,7 @@ public class Agent {
     private ElementType elementType; // 속성
 
     @Column(name = "AGENT_LEVEL")
+    //TODO : 음수는 안되게, 최대레벨 제한(60) 걸어야함
     private int level = 1; // 레벨
 
     @Column(name = "AGENT_EXP")
