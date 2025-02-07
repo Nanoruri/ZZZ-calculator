@@ -87,7 +87,8 @@
 
                 <configuration>
                     <excludes><!--테스트 제외설정-->
-                        <exclude>me/jh/zenless/backend/config/**</exclude>
+                        <exclude>me/jh/zenless/calc/config/**</exclude>
+                        <exclude>me/jh/zenless/calc/ZenlessCalcApplication*</exclude>
                     </excludes>
                 </configuration>
 
