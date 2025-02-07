@@ -18,9 +18,9 @@ public enum RoleType {
     }
 
 
-    public static RoleType fromKoreanName(String koreanName) {
+    public static RoleType fromKoreanName(String name) {
         for (RoleType roleType : RoleType.values()) {
-            if (roleType.koreanName.equals(koreanName)) {
+            if (roleType.koreanName.equals(name)|| roleType.name().equals(name.toUpperCase())) {
                 return roleType;
             }
         }

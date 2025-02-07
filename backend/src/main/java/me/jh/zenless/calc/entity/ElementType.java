@@ -16,9 +16,9 @@ public enum ElementType {
         this.koreanName = koreanName;
     }
 
-    public static ElementType fromKoreanName(String koreanName) {
+    public static ElementType fromKoreanName(String name) {
         for (ElementType elementType : ElementType.values()) {
-            if (elementType.koreanName.equals(koreanName)) {
+            if (elementType.koreanName.equals(name)|| elementType.name().equals(name.toUpperCase())) {
                 return elementType;
             }
         }

@@ -71,12 +71,12 @@ public class AgentService {
         }
     }
 
-    private RoleType convertRoleType(String koreanName) {
-        return RoleType.fromKoreanName(koreanName);
+    private RoleType convertRoleType(String name) {
+        return RoleType.fromKoreanName(name);
     }
 
-    private ElementType convertElementType(String koreanName) {
-        return ElementType.fromKoreanName(koreanName);
+    private ElementType convertElementType(String name) {
+        return ElementType.fromKoreanName(name);
     }
 
 }
