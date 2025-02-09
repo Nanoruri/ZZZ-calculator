@@ -44,14 +44,13 @@ public class Agent {
     @JsonManagedReference("agent-coreSkill")
     private CoreSkill coreSkill; // 코어 스킬
 
-    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, fetch = FetchType.EAGER)//TODO: FetchType.LAZY로 변경할 것
     @JsonManagedReference("agent-skill")
     private List<Skill> skills; // 세부 스킬
 
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(name = "AGENT_STAT_ID")
 //    private List<Stat> stats; // 능력치
-
 
 
 
