@@ -12,12 +12,12 @@
     padding: 12px;
     border-radius: 8px;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: #000000;
     transition: background 0.3s ease;
 }
 
 .character-card:hover {
-    background-color: #e2e8f0;
+    background-color: #ffffff;
 }
 
 .character-image {
