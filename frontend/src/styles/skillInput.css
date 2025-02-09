@@ -1,0 +1,27 @@
+/* frontend/src/styles/skillInput.css */
+.skill-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skill-entry input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+}
+
+.skill-entry button {
+    padding: 5px 10px;
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.skill-entry button:hover {
+    background-color: #fff;
+    color: #000;
+}
