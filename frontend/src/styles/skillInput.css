@@ -1,16 +1,20 @@
 /* frontend/src/styles/skillInput.css */
+/* 스킬 입력 필드 컨테이너 */
 .skill-entry {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    width: 100%;  /* 부모 크기에 맞춤 */
+    max-width: 500px;  /* character-register와 동일한 크기 */
+    justify-content: space-between; /* 내부 요소 정렬 */
+    box-sizing: border-box;
 }
 
+/* 입력 필드 크기 고정 */
 .skill-entry input {
-    margin-right: 10px;
+    flex: 1;
+    max-width: 120px;
+    min-width: 100px;
     padding: 5px;
-    border: 1px solid #000;
-    background-color: #fff;
-    color: #000;
+    box-sizing: border-box;
 }
 
 .skill-entry button {
