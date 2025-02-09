@@ -1,0 +1,99 @@
+/* frontend/src/styles/registAgent.css */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.content {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.register-button {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.character-register {
+    width: 100%;
+    max-width: 500px;  /* 통일된 가로 크기 */
+    min-width: 500px;
+    overflow: hidden;  /* 내부 요소가 넘치는 것 방지 */
+    box-sizing: border-box;
+}
+
+.character-register h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #e74c3c;
+}
+
+.character-register form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+}
+
+.character-register label {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.character-register input,
+.character-register select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #34495e;
+    border-radius: 5px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    font-size: 14px;
+}
+
+.character-register input:focus,
+.character-register select:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+.character-register button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    color: #ecf0f1;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.character-register button:hover {
+    background-color: #c0392b;
+}
+
+/* input[type="number"]의 스크롤 숨김 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}

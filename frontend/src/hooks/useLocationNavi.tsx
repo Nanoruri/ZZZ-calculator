@@ -10,8 +10,13 @@ const useLocationNavigation = () => {
         navigate("/");
     };
 
+
+    const goToRegistAgent = () => {
+        navigate("/create-agent");
+    }
     return {
         goToMain,
+        goToRegistAgent,
     };
 };
 
