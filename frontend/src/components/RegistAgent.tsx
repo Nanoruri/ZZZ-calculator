@@ -20,7 +20,7 @@ const elementTypes = {
 };
 
 const CharacterRegister: React.FC = () => {
-    const { formData, message, handleChange, handleCoreSkillChange, handleSkillChange, addSkill, removeSkill, handleSubmit } = useCharacterForm();
+    const { formData, message, handleChange, handleCoreSkillChange, handleSkillChange, handleSubmit } = useCharacterForm();
 
     return (
         <div className="character-register">
@@ -61,14 +61,15 @@ const CharacterRegister: React.FC = () => {
                     핵심 스킬 이름:
                     <input type="text" name="name" value={formData.coreSkill.name} onChange={handleCoreSkillChange} required/>
                 </label>
-                <h3>스킬 목록 (최대 5개)</h3>
-                {formData.skills.map((skill, index) => (
-                    <SkillInput key={skill.id} skill={skill} index={index} handleSkillChange={handleSkillChange} removeSkill={removeSkill} />
+                <h3>세부 스킬</h3>
+                {Array.from({ length: 5 }).map((_, index) => (
+                    <SkillInput
+                        key={index}
+                        skill={formData.skills[index] || { id: Date.now() + index, name: "", level: 1, maxLevel: 12 }}
+                        index={index}
+                        handleSkillChange={handleSkillChange}
+                    />
                 ))}
-
-                {formData.skills.length < 5 && (
-                    <button type="button" onClick={addSkill}>+ 스킬 추가</button>
-                )}
 
                 <button type="submit">캐릭터 등록</button>
             </form>

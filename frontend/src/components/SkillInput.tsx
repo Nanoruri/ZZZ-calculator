@@ -6,10 +6,10 @@ interface SkillInputProps {
     skill: Skill;
     index: number;
     handleSkillChange: (index: number, field: string, value: string | number) => void;
-    removeSkill: (index: number) => void;
+
 }
 
-const SkillInput: React.FC<SkillInputProps> = ({skill, index, handleSkillChange, removeSkill}) => {
+const SkillInput: React.FC<SkillInputProps> = ({skill, index, handleSkillChange,}) => {
     return (
         <div className="skill-entry">
             <input type="text" placeholder="스킬 이름" value={skill.name}
@@ -20,7 +20,6 @@ const SkillInput: React.FC<SkillInputProps> = ({skill, index, handleSkillChange,
             <input type="number" placeholder="최대 레벨" value={skill.maxLevel}
                    onChange={(e) => handleSkillChange(index, "maxLevel", Number(e.target.value))} required min="1"
                    max="12"/>
-            <button type="button" onClick={() => removeSkill(index)}>X</button>
         </div>
     );
 };

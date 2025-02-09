@@ -10,7 +10,7 @@ export const useCharacterForm = () => {
         level: 1,
         exp: 0,
         coreSkill: { name: "", level: 1, description: "" },
-        skills: [],
+        skills: Array(5).fill({ id: Date.now(), name: "", level: 1, maxLevel: 12 }),
     });
     const [message, setMessage] = useState<string | null>(null);
 
@@ -33,22 +33,6 @@ export const useCharacterForm = () => {
         }));
     };
 
-    const addSkill = () => {
-        if (formData.skills.length < 5) {
-            setFormData((prev) => ({
-                ...prev,
-                skills: [...prev.skills, { id: Date.now(), name: "", level: 1, maxLevel: 12 }],
-            }));
-        }
-    };
-
-    const removeSkill = (index: number) => {
-        setFormData((prev) => ({
-            ...prev,
-            skills: prev.skills.filter((_, i) => i !== index),
-        }));
-    };
-
     const handleSkillChange = (index: number, field: string, value: string | number) => {
         setFormData((prev) => ({
             ...prev,
@@ -68,5 +52,5 @@ export const useCharacterForm = () => {
         }
     };
 
-    return { formData, message, handleChange, handleCoreSkillChange, handleSkillChange, addSkill, removeSkill, handleSubmit };
+    return { formData, message, handleChange, handleCoreSkillChange, handleSkillChange, handleSubmit };
 };
