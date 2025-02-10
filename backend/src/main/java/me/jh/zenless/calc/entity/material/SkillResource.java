@@ -32,6 +32,6 @@ public class SkillResource {
     private int levelRangeEnd; // 레벨 끝 (예: 20)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RESOURCE_ID")
+    @JoinColumn(name = "RESOURCE_CORE_ID")
     private ResourceCore resourceCore;
 }

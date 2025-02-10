@@ -23,6 +23,6 @@ public class CoreSkillResource {
     private String type;// ex)고차원 데이터, 노토리우스 재료
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RESOURCE_ID")
+    @JoinColumn(name = "RESOURCE_CORE_ID")
     private ResourceCore resourceCore;
 }
