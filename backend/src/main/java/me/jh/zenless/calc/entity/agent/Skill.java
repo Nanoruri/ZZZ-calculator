@@ -32,7 +32,7 @@ public class Skill {
     @Column(name = "SKILL_MAX_LEVEL")
     private int maxLevel = 12; // 최대 레벨
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AGENT_ID")
     @JsonBackReference("agent-skill")
     private Agent agent; // 스킬을 가지고 있는 캐릭터

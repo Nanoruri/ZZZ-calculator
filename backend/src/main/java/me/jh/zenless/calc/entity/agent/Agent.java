@@ -44,7 +44,7 @@ public class Agent {
     @JsonManagedReference("agent-coreSkill")
     private CoreSkill coreSkill; // 코어 스킬
 
-    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, fetch = FetchType.EAGER)//TODO: FetchType.LAZY로 변경할 것
+    @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)//TODO: FetchType.LAZY로 변경할 것
     @JsonManagedReference("agent-skill")
     private List<Skill> skills; // 세부 스킬
 
@@ -55,3 +55,9 @@ public class Agent {
 
 
 }
+// API = 에이전트를 List로 반환하는 API, 에이전트 정보를 단일로 반환하는 API
+// 에이전트를 생성하는 API, 에이전트를 수정하는 API, 에이전트를 삭제하는 API
+
+// API = 재료 아이템을 List로 반환하는 API, 재료 아이템 정보를 단일로 반환하는 API
+// 재료 아이템을 생성하는 API, 재료 아이템을 수정하는 API, 재료 아이템을 삭제하는 API
+
