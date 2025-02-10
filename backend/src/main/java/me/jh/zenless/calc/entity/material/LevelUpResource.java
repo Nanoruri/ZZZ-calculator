@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -29,4 +26,7 @@ public class LevelUpResource { // 에이전트 레벨업 재료, 무기 레벨�
     @Column(name = "RESOURCE_TYPE")
     private String type;// ex) 에이전트 레벨업 재료, 무기 레벨업 재료
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RESOURCE_ID")
+    private ResourceCore resourceCore;
 }
