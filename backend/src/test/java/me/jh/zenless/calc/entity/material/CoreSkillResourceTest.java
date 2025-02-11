@@ -45,4 +45,16 @@ public class CoreSkillResourceTest {
         assertEquals("고차원 데이터", coreSkillResource.getType());
         assertEquals("핵심스킬 돌파 재료", coreSkillResource.getResourceCore().getName());
     }
+
+    @Test
+    public void createCoreSkillResourceAllArgsConstructor() {
+        ResourceCore resourceCore = new ResourceCore();
+        resourceCore.setName("핵심스킬 돌파 재료");
+
+        CoreSkillResource coreSkillResource = new CoreSkillResource("형별 통지", "고차원 데이터", resourceCore);
+
+        assertEquals("형별 통지", coreSkillResource.getName());
+        assertEquals("고차원 데이터", coreSkillResource.getType());
+        assertEquals("핵심스킬 돌파 재료", coreSkillResource.getResourceCore().getName());
+    }
 }

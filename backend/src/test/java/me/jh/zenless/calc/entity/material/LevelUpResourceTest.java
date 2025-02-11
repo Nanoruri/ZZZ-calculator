@@ -40,6 +40,17 @@ public class LevelUpResourceTest {
 		assertNull(levelUpResource.getType());
 	}
 
+	@Test
+	public void createLevelUpResourceAllArgsConstructor() {
+		ResourceCore resourceCore = new ResourceCore();
+		resourceCore.setName("레벨업 재료");
 
+		LevelUpResource levelUpResource = new LevelUpResource("조사원 기록", 100, "에이전트 레벨업 재료", resourceCore);
+
+		assertEquals("조사원 기록", levelUpResource.getName());
+		assertEquals(100, levelUpResource.getExperience());
+		assertEquals("에이전트 레벨업 재료", levelUpResource.getType());
+		assertEquals(resourceCore, levelUpResource.getResourceCore());
+	}
 
 }

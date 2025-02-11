@@ -65,4 +65,19 @@ public class BreakthroughResourceTest {
         assertEquals(20, breakthroughResource.getLevelRangeEnd());
         assertEquals("기본 재료", breakthroughResource.getResourceCore().getName());
     }
+
+    @Test
+    public void createBreakthroughResourceAllArgsConstructor() {
+        ResourceCore resourceCore = new ResourceCore();
+        resourceCore.setName("기본 재료");
+
+        BreakthroughResource breakthroughResource = new BreakthroughResource("초급 강공 휘장", ElementType.PHYSICAL, "휘장", 1, 20, resourceCore);
+
+        assertEquals("초급 강공 휘장", breakthroughResource.getName());
+        assertEquals(ElementType.PHYSICAL, breakthroughResource.getAttribute());
+        assertEquals("휘장", breakthroughResource.getType());
+        assertEquals(1, breakthroughResource.getLevelRangeStart());
+        assertEquals(20, breakthroughResource.getLevelRangeEnd());
+        assertEquals("기본 재료", breakthroughResource.getResourceCore().getName());
+    }
 }

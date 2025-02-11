@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -92,5 +94,24 @@ public class ResourceCoreTest {
         resourceCore.getBreakthroughResources().add(breakthroughResource);
 
         assertEquals(1, resourceCore.getBreakthroughResources().size());
+    }
+
+
+
+    @Test
+    public void createResourceCoreWithAllArgsConstructor() {
+        ResourceCore resourceCore = new ResourceCore(
+                "경험치 재료",
+                new HashSet<>(),
+                new HashSet<>(),
+                new HashSet<>(),
+                new HashSet<>()
+        );
+
+        assertEquals("경험치 재료", resourceCore.getName());
+        assertEquals(0, resourceCore.getLevelUpResources().size());
+        assertEquals(0, resourceCore.getSkillResources().size());
+        assertEquals(0, resourceCore.getCoreSkillResources().size());
+        assertEquals(0, resourceCore.getBreakthroughResources().size());
     }
 }

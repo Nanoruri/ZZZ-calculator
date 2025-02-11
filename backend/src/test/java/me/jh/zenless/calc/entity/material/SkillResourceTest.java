@@ -58,4 +58,18 @@ public class SkillResourceTest {
         assertEquals(20, skillResource.getLevelRangeEnd());
         assertEquals("기본 재료", skillResource.getResourceCore().getName());
     }
+
+    @Test
+    public void createSkillResourceAllArgsConstructor() {
+        ResourceCore resourceCore = new ResourceCore();
+        resourceCore.setName("기본 재료");
+
+        SkillResource skillResource = new SkillResource("기본 칩", ElementType.FIRE, 1, 20, resourceCore);
+
+        assertEquals("기본 칩", skillResource.getName());
+        assertEquals(ElementType.FIRE, skillResource.getType());
+        assertEquals(1, skillResource.getLevelRangeStart());
+        assertEquals(20, skillResource.getLevelRangeEnd());
+        assertEquals("기본 재료", skillResource.getResourceCore().getName());
+    }
 }
