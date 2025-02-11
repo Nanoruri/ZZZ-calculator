@@ -1,6 +1,7 @@
 package me.jh.zenless.calc.entity.material;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,6 @@ public class LevelUpResource { // 에이전트 레벨업 재료, 무기 레벨�
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RESOURCE_CORE_ID")
+    @JsonBackReference
     private ResourceCore resourceCore;
 }

@@ -1,6 +1,7 @@
 package me.jh.zenless.calc.entity.material;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,5 +34,6 @@ public class SkillResource {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RESOURCE_CORE_ID")
+    @JsonBackReference
     private ResourceCore resourceCore;
 }
