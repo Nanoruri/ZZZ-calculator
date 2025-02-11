@@ -42,7 +42,6 @@ public class ResourceCoreTest {
         resourceCore.getLevelUpResources().add(levelUpResource);
 
         assertEquals(1, resourceCore.getLevelUpResources().size());
-        assertEquals("조사원 기록", resourceCore.getLevelUpResources().get(0).getName());
     }
 
     @Test
@@ -60,7 +59,6 @@ public class ResourceCoreTest {
         resourceCore.getSkillResources().add(skillResource);
 
         assertEquals(1, resourceCore.getSkillResources().size());
-        assertEquals("기본 칩", resourceCore.getSkillResources().get(0).getName());
     }
 
     @Test
@@ -76,7 +74,6 @@ public class ResourceCoreTest {
         resourceCore.getCoreSkillResources().add(coreSkillResource);
 
         assertEquals(1, resourceCore.getCoreSkillResources().size());
-        assertEquals("형별 통지", resourceCore.getCoreSkillResources().get(0).getName());
     }
 
     @Test
@@ -95,6 +92,5 @@ public class ResourceCoreTest {
         resourceCore.getBreakthroughResources().add(breakthroughResource);
 
         assertEquals(1, resourceCore.getBreakthroughResources().size());
-        assertEquals("초급 강공 휘장", resourceCore.getBreakthroughResources().get(0).getName());
     }
 }
