@@ -24,18 +24,22 @@ public class ResourceCoreRepositoryTest {
         resourceCore.setName("Test Resource");
 
         LevelUpResource levelUpResource = new LevelUpResource();
+        levelUpResource.setName("levelUpResourceId"); // ID 설정
         levelUpResource.setResourceCore(resourceCore);
         resourceCore.setLevelUpResources(Set.of(levelUpResource));
 
         SkillResource skillResource = new SkillResource();
+        skillResource.setName("skillResourceId"); // ID 설정
         skillResource.setResourceCore(resourceCore);
         resourceCore.setSkillResources(Set.of(skillResource));
 
         CoreSkillResource coreSkillResource = new CoreSkillResource();
+        coreSkillResource.setName("coreSkillResourceId"); // ID 설정
         coreSkillResource.setResourceCore(resourceCore);
         resourceCore.setCoreSkillResources(Set.of(coreSkillResource));
 
         BreakthroughResource breakthroughResource = new BreakthroughResource();
+        breakthroughResource.setName("breakthroughResourceId"); // ID 설정
         breakthroughResource.setResourceCore(resourceCore);
         resourceCore.setBreakthroughResources(Set.of(breakthroughResource));
 
