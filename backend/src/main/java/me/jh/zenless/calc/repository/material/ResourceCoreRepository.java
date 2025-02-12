@@ -1,4 +1,4 @@
-package me.jh.zenless.calc.repository.agent;
+package me.jh.zenless.calc.repository.material;
 
 import me.jh.zenless.calc.entity.material.ResourceCore;
 import org.springframework.data.jpa.repository.EntityGraph;

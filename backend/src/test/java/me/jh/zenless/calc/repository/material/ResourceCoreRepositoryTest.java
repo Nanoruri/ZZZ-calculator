@@ -1,8 +1,6 @@
-package me.jh.zenless.calc.repository.materials;
+package me.jh.zenless.calc.repository.material;
 
 import me.jh.zenless.calc.entity.material.*;
-import me.jh.zenless.calc.repository.agent.ResourceCoreRepository;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

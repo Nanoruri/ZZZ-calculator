@@ -1,7 +1,7 @@
 package me.jh.zenless.calc.service.material;
 
 import me.jh.zenless.calc.entity.material.ResourceCore;
-import me.jh.zenless.calc.repository.agent.ResourceCoreRepository;
+import me.jh.zenless.calc.repository.material.ResourceCoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package me.jh.zenless.calc.service.material;
 
 import me.jh.zenless.calc.entity.ElementType;
 import me.jh.zenless.calc.entity.material.*;
-import me.jh.zenless.calc.repository.agent.ResourceCoreRepository;
+import me.jh.zenless.calc.repository.material.ResourceCoreRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
