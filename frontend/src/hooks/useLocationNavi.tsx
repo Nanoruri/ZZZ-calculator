@@ -10,13 +10,17 @@ const useLocationNavigation = () => {
         navigate("/");
     };
 
-
     const goToRegistAgent = () => {
         navigate("/create-agent");
+    }
+
+    const goToRegistMaterial = () => {
+        navigate("/create-material");
     }
     return {
         goToMain,
         goToRegistAgent,
+        goToRegistMaterial,
     };
 };
 
