@@ -1,0 +1,99 @@
+/* frontend/src/styles/material/registMaterial.css */
+.register-material-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.content {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.register-button {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.resource-form {
+    width: 100%;
+    max-width: 500px;
+    min-width: 500px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.resource-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #e74c3c;
+}
+
+.resource-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+}
+
+.resource-form label {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.resource-form input,
+.resource-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #34495e;
+    border-radius: 5px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    font-size: 14px;
+}
+
+.resource-form input:focus,
+.resource-form select:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+.resource-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    color: #ecf0f1;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resource-form button:hover {
+    background-color: #c0392b;
+}
+
+/* input[type="number"]의 스크롤 숨김 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
