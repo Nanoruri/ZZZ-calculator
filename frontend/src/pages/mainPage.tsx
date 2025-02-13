@@ -6,7 +6,7 @@ import "../styles/mainPage.css";
 import useLocationNavigation from "../hooks/useLocationNavi.tsx"; // CSS 파일 import
 
 const MainPage: React.FC = () => {
-    const { goToRegistAgent } = useLocationNavigation();
+    const { goToRegistAgent, goToRegistMaterial } = useLocationNavigation();
     return (
         <div className="main-container">
             <Background />
@@ -15,6 +15,9 @@ const MainPage: React.FC = () => {
                 <CharacterSelect/>
                 <button className="register-button" onClick={goToRegistAgent}>
                     캐릭터 등록
+                </button>
+                <button className="register-button" onClick={goToRegistMaterial}>
+                    재료 등록
                 </button>
             </div>
         </div>
