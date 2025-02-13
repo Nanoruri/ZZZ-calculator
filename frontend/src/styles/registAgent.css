@@ -64,7 +64,10 @@
     background-color: #34495e;
     color: #ecf0f1;
     font-size: 14px;
+    box-sizing: border-box; /* 패딩 포함한 크기 계산 */
+    height: 40px; /* 모든 입력창 높이 통일 */
 }
+
 
 .character-register input:focus,
 .character-register select:focus {
