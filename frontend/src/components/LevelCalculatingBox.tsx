@@ -39,7 +39,7 @@ export const LevelCalculatingBox: React.FC = () => {
     const handleCalculate = () => {
         let remainingExp = levelExpRequirements[goalLevel] || 0;
         let totalResources = 0;
-        let resourceUsage: Record<string, number> = {};
+        const resourceUsage: Record<string, number> = {};
 
         // 🟢 경험치 높은 순서대로 아이템 사용
         for (const resource of sortedResources) {
@@ -60,17 +60,23 @@ export const LevelCalculatingBox: React.FC = () => {
         setUsedResources(resourceUsage);
 
         // 🟢 돌파 재료 계산 (DB 데이터 활용)
-        let breakthroughUsage: Record<string, number> = {};
+        const breakthroughUsage: Record<string, number> = {};
 
-        breakthroughResources.forEach(resource => {
-            const { name, levelRangeStart, levelRangeEnd } = resource; // 초급부터 시작
+        breakthroughResources.forEach(resource => {// breakthroughResources에 있는 돌파재료 데이터를 하나씩 가져옴
+            const {name, levelRangeStart, levelRangeEnd} = resource;
+
             if (goalLevel > levelRangeStart) {
-                if (levelRangeEnd === 20) {
-                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + 4;
-                } else if (levelRangeEnd === 40) {
-                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + (goalLevel <= 30 ? 12 : 32);
-                } else if (levelRangeEnd === 60) {
-                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + (goalLevel <= 50 ? 10 : 30);
+                let requiredAmount = 0;// 필요한 돌파 재료 개수
+
+                if (levelRangeStart === 1 && levelRangeEnd === 20) {requiredAmount = 4; // 초급 휘장
+                } else if (levelRangeStart === 20 && levelRangeEnd === 40) {
+                    requiredAmount = 12 + (goalLevel > 30 ? 20 : 0); // 고급 휘장
+                } else if (levelRangeStart === 40 && levelRangeEnd === 60) {
+                    requiredAmount = 10 + (goalLevel > 50 ? 20 : 0); // 선구자 휘장
+                }
+
+                if (requiredAmount > 0) {
+                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + requiredAmount;
                 }
             }
         });
