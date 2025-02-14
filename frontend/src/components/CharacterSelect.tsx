@@ -12,6 +12,7 @@ import useLocationNavigation from "../hooks/useLocationNavi.tsx";
 
 
 const CharacterSelect: React.FC = () => {
+    const {goToCalc} = useLocationNavigation();
     const { characters, loading, error } = useCharacters(); // 훅에서 데이터와 상태 가져오기
     if (loading) {
         return <p>로딩 중...</p>; // 로딩 상태일 때
@@ -22,7 +23,7 @@ const CharacterSelect: React.FC = () => {
     }
 
     return (
-        <div className="character-grid">
+        <div className="character-grid" onClick={goToCalc}>
             {characters.map((char) => (
                 <div key={char.name} className="character-card">
                     <img src={char.role} alt={char.name} className="character-image" />

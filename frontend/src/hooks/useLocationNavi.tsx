@@ -9,6 +9,9 @@ const useLocationNavigation = () => {
     const goToMain = () => {
         navigate("/");
     };
+    const goToCalc= () => {
+        navigate("/calc");
+    }
 
     const goToRegistAgent = () => {
         navigate("/create-agent");
@@ -21,6 +24,7 @@ const useLocationNavigation = () => {
         goToMain,
         goToRegistAgent,
         goToRegistMaterial,
+        goToCalc,
     };
 };
 
