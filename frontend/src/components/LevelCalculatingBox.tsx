@@ -63,14 +63,14 @@ export const LevelCalculatingBox: React.FC = () => {
         let breakthroughUsage: Record<string, number> = {};
 
         breakthroughResources.forEach(resource => {
-            const { name, levelRangeStart, levelRangeEnd } = resource;
+            const { name, levelRangeStart, levelRangeEnd } = resource; // 초급부터 시작
             if (goalLevel > levelRangeStart) {
                 if (levelRangeEnd === 20) {
-                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + 10;
+                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + 4;
                 } else if (levelRangeEnd === 40) {
-                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + (goalLevel <= 30 ? 12 : 20);
+                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + (goalLevel <= 30 ? 12 : 32);
                 } else if (levelRangeEnd === 60) {
-                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + (goalLevel <= 50 ? 10 : 20);
+                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + (goalLevel <= 50 ? 10 : 30);
                 }
             }
         });
