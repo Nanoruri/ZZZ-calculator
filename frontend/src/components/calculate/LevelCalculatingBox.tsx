@@ -1,79 +1,21 @@
-import React, {useState} from "react";
-import "../styles/calculatingBox.css";
-import {useMaterials} from "../hooks/useMaterials.tsx";
-
-// 이 컴포넌트는 캐릭터의 육성 목표치를 설정하여 목표치에 대한 자원을 보여주는 컴포넌트입니다.
-
-// 목표레벨을 설정(셀렉박스)
-// 목표레벨에 따른 자원을 계산하여 보여줌 (계산하기 버튼)(계산 컴포넌트는 아직 미구현)
-//ResourceCore.BreakthroughResource에서 레벨 범위를 가져와서 계산해야함
-
-// 목표치에 대한 자원을 보여줌
+import React from "react";
+import "../../styles/calculatingBox.css";
+import {useLevelUpCalculator} from "../../hooks/calculate/useLevelUpCalculator.tsx";
+import {useBreakthroughCalculator} from "../../hooks/calculate/useBreakthroughCalculator.tsx";
+import {useMaterials} from "../../hooks/useMaterials.tsx";
 
 export const LevelCalculatingBox: React.FC = () => {
-    const { materials } = useMaterials();
-    const [goalLevel, setGoalLevel] = useState<number>(20);
-    const [, setGoalResource] = useState<number>(0);
-    const [usedResources, setUsedResources] = useState<Record<string, number>>({});
-    const [usedBreakthroughs, setUsedBreakthroughs] = useState<Record<string, number>>({});
+    const { goalLevel, setGoalLevel, usedResources, calculateExpResources } = useLevelUpCalculator();
+    const { usedBreakthroughs, calculateBreakthroughResources } = useBreakthroughCalculator(goalLevel);
 
-    const levelExpRequirements: Record<number, number> = {
-        20: 5000,
-        30: 15000,
-        40: 50000,
-        60: 120000,
-    };
-
-    const levelUpResources = materials.flatMap(material => material.levelUpResources || []);// 레벨업 재료 배열
-    const breakthroughResources = materials.flatMap(material => material.breakthroughResources || []);// 돌파 재료 배열
-    const sortedResources = [...levelUpResources].sort((a, b) => b.experience - a.experience);// 경험치 순으로 정렬
 
     const handleGoalLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setGoalLevel(parseInt(e.target.value));
     };
 
     const handleCalculate = () => {
-        let remainingExp = levelExpRequirements[goalLevel] || 0;// 잔여 경험치
-        const resourceUsage: Record<string, number> = {};
-
-        sortedResources.forEach(resource => {
-            const { name, experience } = resource;
-            const maxUsable = Math.floor(remainingExp / experience);
-
-            if (maxUsable > 0) {
-                resourceUsage[name] = maxUsable;
-                remainingExp -= maxUsable * experience;
-            }
-
-            if (remainingExp <= 0) return;
-        });
-
-        setGoalResource(Object.values(resourceUsage).reduce((a, b) => a + b, 0));
-        setUsedResources(resourceUsage);
-
-        const breakthroughUsage: Record<string, number> = {};
-
-        breakthroughResources.forEach(resource => {
-            const { name, levelRangeStart, levelRangeEnd } = resource;
-
-            if (goalLevel > levelRangeStart) {
-                let requiredAmount = 0;
-
-                if (levelRangeStart === 1 && levelRangeEnd === 20) {
-                    requiredAmount = 4;
-                } else if (levelRangeStart === 20 && levelRangeEnd === 40) {
-                    requiredAmount = 12 + (goalLevel > 30 ? 20 : 0);
-                } else if (levelRangeStart === 40 && levelRangeEnd === 60) {
-                    requiredAmount = 10 + (goalLevel > 50 ? 20 : 0);
-                }
-
-                if (requiredAmount > 0) {
-                    breakthroughUsage[name] = (breakthroughUsage[name] || 0) + requiredAmount;
-                }
-            }
-        });
-
-        setUsedBreakthroughs(breakthroughUsage);
+        calculateExpResources();
+        calculateBreakthroughResources();
     };
 
     return (
