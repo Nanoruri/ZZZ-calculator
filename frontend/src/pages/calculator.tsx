@@ -1,6 +1,6 @@
 import Background from "../components/Background.tsx";
 import Header from "../components/Header.tsx";
-import {LevelCalculatingBox} from "../components/LevelCalculatingBox.tsx";
+import {LevelCalculatingBox} from "../components/calculate/LevelCalculatingBox.tsx";
 import "../styles/mainPage.css";
 import React from "react";
 

@@ -13,11 +13,10 @@ import {useMaterials} from "../hooks/useMaterials.tsx";
 export const LevelCalculatingBox: React.FC = () => {
     const { materials } = useMaterials();
     const [goalLevel, setGoalLevel] = useState<number>(20);
-    const [goalResource, setGoalResource] = useState<number>(0);
+    const [, setGoalResource] = useState<number>(0);
     const [usedResources, setUsedResources] = useState<Record<string, number>>({});
     const [usedBreakthroughs, setUsedBreakthroughs] = useState<Record<string, number>>({});
 
-    // 목표 레벨별 필요 경험치
     const levelExpRequirements: Record<number, number> = {
         20: 5000,
         30: 15000,
@@ -25,54 +24,47 @@ export const LevelCalculatingBox: React.FC = () => {
         60: 120000,
     };
 
-    // 레벨업 재료와 돌파 재료 가져오기
-    const levelUpResources = materials.flatMap(material => material.levelUpResources || []);
-    const breakthroughResources = materials.flatMap(material => material.breakthroughResources || []);
-
-    // 레벨업 재료: 경험치 높은 순서대로 정렬
-    const sortedResources = [...levelUpResources].sort((a, b) => b.experience - a.experience);
+    const levelUpResources = materials.flatMap(material => material.levelUpResources || []);// 레벨업 재료 배열
+    const breakthroughResources = materials.flatMap(material => material.breakthroughResources || []);// 돌파 재료 배열
+    const sortedResources = [...levelUpResources].sort((a, b) => b.experience - a.experience);// 경험치 순으로 정렬
 
     const handleGoalLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setGoalLevel(parseInt(e.target.value));
     };
 
     const handleCalculate = () => {
-        let remainingExp = levelExpRequirements[goalLevel] || 0;
-        let totalResources = 0;
+        let remainingExp = levelExpRequirements[goalLevel] || 0;// 잔여 경험치
         const resourceUsage: Record<string, number> = {};
 
-        // 🟢 경험치 높은 순서대로 아이템 사용
-        for (const resource of sortedResources) {
+        sortedResources.forEach(resource => {
             const { name, experience } = resource;
             const maxUsable = Math.floor(remainingExp / experience);
 
             if (maxUsable > 0) {
                 resourceUsage[name] = maxUsable;
+                remainingExp -= maxUsable * experience;
             }
 
-            totalResources += maxUsable;
-            remainingExp -= maxUsable * experience;
+            if (remainingExp <= 0) return;
+        });
 
-            if (remainingExp <= 0) break;
-        }
-
-        setGoalResource(totalResources);
+        setGoalResource(Object.values(resourceUsage).reduce((a, b) => a + b, 0));
         setUsedResources(resourceUsage);
 
-        // 🟢 돌파 재료 계산 (DB 데이터 활용)
         const breakthroughUsage: Record<string, number> = {};
 
-        breakthroughResources.forEach(resource => {// breakthroughResources에 있는 돌파재료 데이터를 하나씩 가져옴
-            const {name, levelRangeStart, levelRangeEnd} = resource;
+        breakthroughResources.forEach(resource => {
+            const { name, levelRangeStart, levelRangeEnd } = resource;
 
             if (goalLevel > levelRangeStart) {
-                let requiredAmount = 0;// 필요한 돌파 재료 개수
+                let requiredAmount = 0;
 
-                if (levelRangeStart === 1 && levelRangeEnd === 20) {requiredAmount = 4; // 초급 휘장
+                if (levelRangeStart === 1 && levelRangeEnd === 20) {
+                    requiredAmount = 4;
                 } else if (levelRangeStart === 20 && levelRangeEnd === 40) {
-                    requiredAmount = 12 + (goalLevel > 30 ? 20 : 0); // 고급 휘장
+                    requiredAmount = 12 + (goalLevel > 30 ? 20 : 0);
                 } else if (levelRangeStart === 40 && levelRangeEnd === 60) {
-                    requiredAmount = 10 + (goalLevel > 50 ? 20 : 0); // 선구자 휘장
+                    requiredAmount = 10 + (goalLevel > 50 ? 20 : 0);
                 }
 
                 if (requiredAmount > 0) {
@@ -121,4 +113,3 @@ export const LevelCalculatingBox: React.FC = () => {
         </div>
     );
 };
-
