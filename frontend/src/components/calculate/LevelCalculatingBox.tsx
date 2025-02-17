@@ -45,12 +45,11 @@ export const LevelCalculatingBox: React.FC = () => {
                     <option value={50}>50</option>
                     <option value={60}>60</option>
                 </select>
-                <label htmlFor="goal-level">레벨</label>
             </div>
 
             {/* 🔹 목표 스킬 레벨 선택 */}
             <div className="goal-skill-level">
-                <label htmlFor="goal-skill-level">목표 스킬 레벨</label>
+                <label htmlFor="goal-skill-level">스킬 레벨</label>
                 <select id="goal-skill-level" value={goalSkillLevel} onChange={handleGoalSkillLevelChange}>
                     {[...Array(12)].map((_, i) => (
                         <option key={i + 1} value={i + 1}>{i + 1}</option>
@@ -60,7 +59,7 @@ export const LevelCalculatingBox: React.FC = () => {
 
             {/* 🔹 목표 CoreSkill 레벨 선택 */}
             <div className="goal-core-skill-level">
-                <label htmlFor="goal-core-skill-level">목표 CoreSkill 레벨</label>
+                <label htmlFor="goal-core-skill-level"> 핵심 스킬 레벨</label>
                 <select id="goal-core-skill-level" value={goalCoreSkillLevel} onChange={handleGoalCoreSkillLevelChange}>
                     {[...Array(6)].map((_, i) => (
                         <option key={i + 1} value={i + 1}>{i + 1}</option>
