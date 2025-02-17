@@ -3,11 +3,13 @@ import "../../styles/calculatingBox.css";
 import {useLevelUpCalculator} from "../../hooks/calculate/useLevelUpCalculator.tsx";
 import {useBreakthroughCalculator} from "../../hooks/calculate/useBreakthroughCalculator.tsx";
 import {useSkillUpgradeCalculator} from "../../hooks/calculate/useSkillLevelUpCalculator.tsx";
+import {useCoreSkillUpgradeCalculator} from "../../hooks/calculate/useCoreSkillResourceCalculator.tsx";
 
 export const LevelCalculatingBox: React.FC = () => {
     const { goalLevel, setGoalLevel, usedResources, calculateExpResources } = useLevelUpCalculator();
     const { usedBreakthroughs, calculateBreakthroughResources } = useBreakthroughCalculator(goalLevel);
     const { goalSkillLevel, setGoalSkillLevel, usedSkillResources, calculateSkillResources } = useSkillUpgradeCalculator();
+    const { goalCoreSkillLevel, setGoalCoreSkillLevel, usedCoreSkillResources, calculateCoreSkillResources } = useCoreSkillUpgradeCalculator();
 
     const handleGoalLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setGoalLevel(parseInt(e.target.value));
@@ -17,10 +19,16 @@ export const LevelCalculatingBox: React.FC = () => {
         setGoalSkillLevel(parseInt(e.target.value));
     };
 
+    const handleGoalCoreSkillLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setGoalCoreSkillLevel(parseInt(e.target.value));
+    };
+
     const handleCalculate = () => {
         calculateExpResources();
         calculateBreakthroughResources();
         calculateSkillResources()
+        calculateCoreSkillResources();
+
     };
 
     return (
@@ -45,6 +53,16 @@ export const LevelCalculatingBox: React.FC = () => {
                 <label htmlFor="goal-skill-level">목표 스킬 레벨</label>
                 <select id="goal-skill-level" value={goalSkillLevel} onChange={handleGoalSkillLevelChange}>
                     {[...Array(12)].map((_, i) => (
+                        <option key={i + 1} value={i + 1}>{i + 1}</option>
+                    ))}
+                </select>
+            </div>
+
+            {/* 🔹 목표 CoreSkill 레벨 선택 */}
+            <div className="goal-core-skill-level">
+                <label htmlFor="goal-core-skill-level">목표 CoreSkill 레벨</label>
+                <select id="goal-core-skill-level" value={goalCoreSkillLevel} onChange={handleGoalCoreSkillLevelChange}>
+                    {[...Array(6)].map((_, i) => (
                         <option key={i + 1} value={i + 1}>{i + 1}</option>
                     ))}
                 </select>
@@ -75,6 +93,15 @@ export const LevelCalculatingBox: React.FC = () => {
                 <ul>
                     {Object.entries(usedSkillResources).map(([name, count]) => (
                         <li key={name}>{name}: {count}개</li>
+                    ))}
+                </ul>
+            </div>
+
+            <div className="core-skill-resource">
+                <h3>필요 핵심스킬 재료</h3>
+                <ul>
+                    {Object.entries(usedCoreSkillResources).map(([type, count]) => (
+                        <li key={type}>{type}: {count}개</li>
                     ))}
                 </ul>
             </div>
