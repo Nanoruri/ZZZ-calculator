@@ -1,0 +1,107 @@
+.calculating-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8); /* 반투명 배경 */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.calculating-box h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.goal-level,
+.goal-skill-level,
+.goal-core-skill-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.goal-level label,
+.goal-skill-level label,
+.goal-core-skill-level label {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.goal-level select,
+.goal-skill-level select,
+.goal-core-skill-level select {
+  width: 80%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: black;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* 리스트 스타일 */
+.goal-resource,
+.breakthrough-resource,
+.skill-resource,
+.core-skill-resource {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.goal-resource h3,
+.breakthrough-resource h3,
+.skill-resource h3,
+.core-skill-resource h3 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.goal-resource ul,
+.breakthrough-resource ul,
+.skill-resource ul,
+.core-skill-resource ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.goal-resource li,
+.breakthrough-resource li,
+.skill-resource li,
+.core-skill-resource li {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* 버튼 스타일 */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #000000, #434343);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #000000, #ffffff);
+  color: white;
+}
