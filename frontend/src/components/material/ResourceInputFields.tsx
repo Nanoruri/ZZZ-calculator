@@ -44,11 +44,14 @@ const ResourceInputFields: React.FC = () => {
                 </div>
             )}
             {resourceType === "BreakthroughResource" && (
+                <div className="form-group">
+                    <label>속성:</label>
+                    <input type="text" name="attribute" value={newResource.attribute} onChange={handleChange} className="form-control" />
+                </div>
+            )}
+
+            {(resourceType === "BreakthroughResource" || resourceType === "SkillResource") && (
                 <>
-                    <div className="form-group">
-                        <label>속성:</label>
-                        <input type="text" name="attribute" value={newResource.attribute} onChange={handleChange} className="form-control" />
-                    </div>
                     <div className="form-group">
                         <label>레벨 범위:</label>
                         <input type="number" name="levelRangeStart" value={newResource.levelRangeStart} onChange={handleChange} className="form-control" />
