@@ -88,7 +88,7 @@
 }
 
 /* 버튼 스타일 */
-button {
+.calculate-button {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
@@ -101,7 +101,7 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.calculate-button:hover {
   background: linear-gradient(135deg, #000000, #ffffff);
   color: white;
 }

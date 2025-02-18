@@ -105,7 +105,7 @@ export const LevelCalculatingBox: React.FC = () => {
                 </ul>
             </div>
 
-            <button onClick={handleCalculate}>계산하기</button>
+            <button className="calculate-button" onClick={handleCalculate}>계산하기</button>
         </div>
     );
 };
