@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import {Agent} from "../ts/api/getCharacterInfo.ts";
 
 
 
@@ -9,8 +10,8 @@ const useLocationNavigation = () => {
     const goToMain = () => {
         navigate("/");
     };
-    const goToCalc= () => {
-        navigate("/calc");
+    const goToCalc= (character:Agent) => {
+        navigate("/calc", { state: { character } });
     }
 
     const goToRegistAgent = () => {
