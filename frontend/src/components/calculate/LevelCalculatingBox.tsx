@@ -4,12 +4,22 @@ import {useLevelUpCalculator} from "../../hooks/calculate/useLevelUpCalculator.t
 import {useBreakthroughCalculator} from "../../hooks/calculate/useBreakthroughCalculator.tsx";
 import {useSkillUpgradeCalculator} from "../../hooks/calculate/useSkillLevelUpCalculator.tsx";
 import {useCoreSkillUpgradeCalculator} from "../../hooks/calculate/useCoreSkillResourceCalculator.tsx";
+import {useLocation} from "react-router-dom";
+import {Agent} from "../../ts/api/getCharacterInfo.ts";
 
 export const LevelCalculatingBox: React.FC = () => {
     const { goalLevel, setGoalLevel, usedResources, calculateExpResources } = useLevelUpCalculator();
     const { usedBreakthroughs, calculateBreakthroughResources } = useBreakthroughCalculator(goalLevel);
     const { goalSkillLevel, setGoalSkillLevel, usedSkillResources, calculateSkillResources } = useSkillUpgradeCalculator();
     const { goalCoreSkillLevel, setGoalCoreSkillLevel, usedCoreSkillResources, calculateCoreSkillResources } = useCoreSkillUpgradeCalculator();
+
+
+    const location = useLocation();
+    const { character }: { character: Agent } = location.state || {}; // 전달된 캐릭터 데이터
+
+    if (!character) return <p>캐릭터 정보가 없습니다.</p>;
+
+
 
     const handleGoalLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setGoalLevel(parseInt(e.target.value));
@@ -32,8 +42,23 @@ export const LevelCalculatingBox: React.FC = () => {
     };
 
     return (
+
+
         <div className="calculating-box">
             <h2>목표레벨 계산</h2>
+
+
+            {character ? (
+                <div className="character-info">
+                    <h3>선택한 캐릭터</h3>
+                    {/*<img src={character.role} alt={character.name} className="character-image" />*/}
+                    <p>이름: {character.name}</p>
+                    <p>역할: {character.role}</p>
+                    <p>속성: {character.elementType}</p>
+                </div>
+            ) : (
+                <p>캐릭터 정보를 찾을 수 없습니다.</p>
+            )}
 
 
             <div className="goal-level">
