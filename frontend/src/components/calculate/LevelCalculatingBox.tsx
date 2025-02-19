@@ -6,6 +6,7 @@ import {useSkillUpgradeCalculator} from "../../hooks/calculate/useSkillLevelUpCa
 import {useCoreSkillUpgradeCalculator} from "../../hooks/calculate/useCoreSkillResourceCalculator.tsx";
 import {useLocation} from "react-router-dom";
 import {Agent} from "../../ts/api/getCharacterInfo.ts";
+import ResourceList from "../material/ResourceList.tsx";
 
 export const LevelCalculatingBox: React.FC = () => {
     const { goalLevel, setGoalLevel, usedResources, calculateExpResources } = useLevelUpCalculator();
@@ -93,42 +94,10 @@ export const LevelCalculatingBox: React.FC = () => {
             </div>
 
 
-            <div className="goal-resource">
-                <h3>필요 총 재료 개수</h3>
-                <ul>
-                    {Object.entries(usedResources).map(([name, count]) => (
-                        <li key={name}>{name}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="breakthrough-resource">
-                <h3>필요 돌파 재료</h3>
-                <ul>
-                    {Object.entries(usedBreakthroughs).map(([name, count]) => (
-                        <li key={name}>{name}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
-
-
-            <div className="skill-resource">
-                <h3>필요 스킬 재료</h3>
-                <ul>
-                    {Object.entries(usedSkillResources).map(([name, count]) => (
-                        <li key={name}>{name}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="core-skill-resource">
-                <h3>필요 핵심스킬 재료</h3>
-                <ul>
-                    {Object.entries(usedCoreSkillResources).map(([type, count]) => (
-                        <li key={type}>{type}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
+            <ResourceList title="필요 총 재료 개수" resources={usedResources} />
+            <ResourceList title="필요 돌파 재료" resources={usedBreakthroughs} />
+            <ResourceList title="필요 스킬 재료" resources={usedSkillResources} />
+            <ResourceList title="필요 핵심 스킬 재료" resources={usedCoreSkillResources} />
 
             <button className="calculate-button" onClick={handleCalculate}>계산하기</button>
         </div>
