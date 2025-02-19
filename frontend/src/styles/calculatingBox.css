@@ -19,44 +19,44 @@
 
 
 /* 리스트 스타일 */
-.goal-resource,
-.breakthrough-resource,
-.skill-resource,
-.core-skill-resource {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  margin-top: 10px;
-}
+/*.goal-resource,*/
+/*.breakthrough-resource,*/
+/*.skill-resource,*/
+/*.core-skill-resource {*/
+/*  width: 100%;*/
+/*  background: rgba(255, 255, 255, 0.1);*/
+/*  border-radius: 8px;*/
+/*  margin-top: 10px;*/
+/*}*/
 
-.goal-resource h3,
-.breakthrough-resource h3,
-.skill-resource h3,
-.core-skill-resource h3 {
-  font-size: 1.2rem;
-  text-align: center;
-}
+/*.goal-resource h3,*/
+/*.breakthrough-resource h3,*/
+/*.skill-resource h3,*/
+/*.core-skill-resource h3 {*/
+/*  font-size: 1.2rem;*/
+/*  text-align: center;*/
+/*}*/
 
-.goal-resource ul,
-.breakthrough-resource ul,
-.skill-resource ul,
-.core-skill-resource ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
+/*.goal-resource ul,*/
+/*.breakthrough-resource ul,*/
+/*.skill-resource ul,*/
+/*.core-skill-resource ul {*/
+/*  list-style: none;*/
+/*  padding: 0;*/
+/*  margin: 0;*/
+/*  text-align: center;*/
+/*}*/
 
-.goal-resource li,
-.breakthrough-resource li,
-.skill-resource li,
-.core-skill-resource li {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 5px;
-  font-size: 1rem;
-}
+/*.goal-resource li,*/
+/*.breakthrough-resource li,*/
+/*.skill-resource li,*/
+/*.core-skill-resource li {*/
+/*  background: rgba(255, 255, 255, 0.2);*/
+/*  padding: 8px;*/
+/*  margin: 5px 0;*/
+/*  border-radius: 5px;*/
+/*  font-size: 1rem;*/
+/*}*/
 
 /* 버튼 스타일 */
 .calculate-button {
