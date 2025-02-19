@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchCharacters, Agent } from "../ts/api/getCharacterInfo.ts";
+import {useLocation} from "react-router-dom";
 
 export const useCharacters = () => {
     const [characters, setCharacters] = useState<Agent[]>([]);
@@ -25,4 +26,10 @@ export const useCharacters = () => {
     }, []); // 컴포넌트 마운트 시 한 번만 실행
 
     return { characters, loading, error };
+};
+
+export const useCharacterInfo = () => {
+    const location = useLocation();
+    const { character }: { character?: Agent } = location.state || {};
+    return character ?? null;
 };

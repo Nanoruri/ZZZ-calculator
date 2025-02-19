@@ -4,6 +4,9 @@ import {useLevelUpCalculator} from "../../hooks/calculate/useLevelUpCalculator.t
 import {useBreakthroughCalculator} from "../../hooks/calculate/useBreakthroughCalculator.tsx";
 import {useSkillUpgradeCalculator} from "../../hooks/calculate/useSkillLevelUpCalculator.tsx";
 import {useCoreSkillUpgradeCalculator} from "../../hooks/calculate/useCoreSkillResourceCalculator.tsx";
+import ResourceList from "../material/ResourceList.tsx";
+import GoalSelect from "./GoalSelect.tsx";
+import {CharacterInfo} from "../CharacterInfo.tsx";
 
 export const LevelCalculatingBox: React.FC = () => {
     const { goalLevel, setGoalLevel, usedResources, calculateExpResources } = useLevelUpCalculator();
@@ -11,17 +14,11 @@ export const LevelCalculatingBox: React.FC = () => {
     const { goalSkillLevel, setGoalSkillLevel, usedSkillResources, calculateSkillResources } = useSkillUpgradeCalculator();
     const { goalCoreSkillLevel, setGoalCoreSkillLevel, usedCoreSkillResources, calculateCoreSkillResources } = useCoreSkillUpgradeCalculator();
 
-    const handleGoalLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setGoalLevel(parseInt(e.target.value));
+
+    const handleGoalLevelChange = (setter: (value: number) => void) => (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setter(parseInt(e.target.value));
     };
 
-    const handleGoalSkillLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setGoalSkillLevel(parseInt(e.target.value));
-    };
-
-    const handleGoalCoreSkillLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setGoalCoreSkillLevel(parseInt(e.target.value));
-    };
 
     const handleCalculate = () => {
         calculateExpResources();
@@ -32,78 +29,41 @@ export const LevelCalculatingBox: React.FC = () => {
     };
 
     return (
+
         <div className="calculating-box">
             <h2>목표레벨 계산</h2>
 
 
-            <div className="goal-level">
-                <label htmlFor="goal-level">목표 레벨</label>
-                <select id="goal-level" value={goalLevel} onChange={handleGoalLevelChange}>
-                    <option value={20}>20</option>
-                    <option value={30}>30</option>
-                    <option value={40}>40</option>
-                    <option value={50}>50</option>
-                    <option value={60}>60</option>
-                </select>
-            </div>
+            <CharacterInfo />
 
-            {/* 🔹 목표 스킬 레벨 선택 */}
-            <div className="goal-skill-level">
-                <label htmlFor="goal-skill-level">스킬 레벨</label>
-                <select id="goal-skill-level" value={goalSkillLevel} onChange={handleGoalSkillLevelChange}>
-                    {[...Array(12)].map((_, i) => (
-                        <option key={i + 1} value={i + 1}>{i + 1}</option>
-                    ))}
-                </select>
-            </div>
+            <GoalSelect
+                label="목표 레벨"
+                id="goal-level"
+                value={goalLevel}
+                onChange={handleGoalLevelChange(setGoalLevel)}
+                options={[20, 30, 40, 50, 60]}
+            />
 
-            {/* 🔹 목표 CoreSkill 레벨 선택 */}
-            <div className="goal-core-skill-level">
-                <label htmlFor="goal-core-skill-level"> 핵심 스킬 레벨</label>
-                <select id="goal-core-skill-level" value={goalCoreSkillLevel} onChange={handleGoalCoreSkillLevelChange}>
-                    {[...Array(6)].map((_, i) => (
-                        <option key={i + 1} value={i + 1}>{i + 1}</option>
-                    ))}
-                </select>
-            </div>
+            <GoalSelect
+                label="스킬 레벨"
+                id="goal-skill-level"
+                value={goalSkillLevel}
+                onChange={handleGoalLevelChange(setGoalSkillLevel)}
+                options={[...Array(12)].map((_, i) => i + 1)}
+            />
 
+            <GoalSelect
+                label="핵심 스킬 레벨"
+                id="goal-core-skill-level"
+                value={goalCoreSkillLevel}
+                onChange={handleGoalLevelChange(setGoalCoreSkillLevel)}
+                options={[...Array(6)].map((_, i) => i + 1)}
+            />
 
-            <div className="goal-resource">
-                <h3>필요 총 재료 개수</h3>
-                <ul>
-                    {Object.entries(usedResources).map(([name, count]) => (
-                        <li key={name}>{name}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="breakthrough-resource">
-                <h3>필요 돌파 재료</h3>
-                <ul>
-                    {Object.entries(usedBreakthroughs).map(([name, count]) => (
-                        <li key={name}>{name}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
-
-
-            <div className="skill-resource">
-                <h3>필요 스킬 재료</h3>
-                <ul>
-                    {Object.entries(usedSkillResources).map(([name, count]) => (
-                        <li key={name}>{name}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="core-skill-resource">
-                <h3>필요 핵심스킬 재료</h3>
-                <ul>
-                    {Object.entries(usedCoreSkillResources).map(([type, count]) => (
-                        <li key={type}>{type}: {count}개</li>
-                    ))}
-                </ul>
-            </div>
+            <ResourceList title="필요 총 재료 개수" resources={usedResources}/>
+            <ResourceList title="필요 돌파 재료" resources={usedBreakthroughs}/>
+            <ResourceList title="필요 스킬 재료" resources={usedSkillResources}/>
+            <ResourceList title="필요 핵심 스킬 재료" resources={usedCoreSkillResources}/>
 
             <button className="calculate-button" onClick={handleCalculate}>계산하기</button>
         </div>
