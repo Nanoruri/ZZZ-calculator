@@ -1,5 +1,6 @@
 package me.jh.zenless.calc.filter;
 
+import me.jh.zenless.calc.config.WebFilterConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +12,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -41,6 +43,12 @@ class LoggingFilterTest {
     }
 
     @Test
+    public void initLogsInitialization() throws ServletException {
+        loggingFilter.init(mock(FilterConfig.class));
+    }
+
+
+    @Test
     public void doFilterLogsRequestAndResponse() throws IOException, ServletException {
         request.setRequestURI("/api/test");
 
@@ -51,8 +59,8 @@ class LoggingFilterTest {
     }
 
     @Test
-    public void doFilterSkipsStaticResources() throws IOException, ServletException {
-        request.setRequestURI("/static/test");
+    public void doFilterSkipsImagesResources() throws IOException, ServletException {
+        request.setRequestURI("/images/test");
 
         loggingFilter.doFilter(request, response, filterChain);
 
