@@ -23,7 +23,7 @@ public class LoggingFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String requestURI = request.getRequestURI();
 
-        if (requestURI.startsWith("/static/") || requestURI.startsWith("/css/") || requestURI.startsWith("/js/") || requestURI.startsWith("/images/")) {
+        if (requestURI.startsWith("/images/")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
