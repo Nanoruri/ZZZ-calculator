@@ -7,13 +7,17 @@ import {useCoreSkillUpgradeCalculator} from "../../hooks/calculate/useCoreSkillR
 import ResourceList from "../material/ResourceList.tsx";
 import GoalSelect from "./GoalSelect.tsx";
 import {CharacterInfo} from "../CharacterInfo.tsx";
+import {useCharacterInfo} from "../../hooks/useCharacter.tsx";
+import {characterData} from "../../ts/utils/characterData.ts";
+import {convertRole} from "../../ts/utils/convertRole.ts";
+import {convertElementType} from "../../ts/utils/convertElementType.ts";
 
 export const LevelCalculatingBox: React.FC = () => {
     const { goalLevel, setGoalLevel, usedResources, calculateExpResources } = useLevelUpCalculator();
     const { usedBreakthroughs, calculateBreakthroughResources } = useBreakthroughCalculator(goalLevel);
     const { goalSkillLevel, setGoalSkillLevel, usedSkillResources, calculateSkillResources } = useSkillUpgradeCalculator();
     const { goalCoreSkillLevel, setGoalCoreSkillLevel, usedCoreSkillResources, calculateCoreSkillResources } = useCoreSkillUpgradeCalculator();
-
+    const character = useCharacterInfo();
 
     const handleGoalLevelChange = (setter: (value: number) => void) => (e: React.ChangeEvent<HTMLSelectElement>) => {
         setter(parseInt(e.target.value));
@@ -21,9 +25,14 @@ export const LevelCalculatingBox: React.FC = () => {
 
 
     const handleCalculate = () => {
+        const { role, elementType } = characterData(character);
+        // 역할과 속성을 한글로 변환.
+        const convertedRole = convertRole(role);
+        const convertedElementType = convertElementType(elementType);
+
         calculateExpResources();
-        calculateBreakthroughResources();
-        calculateSkillResources()
+        calculateBreakthroughResources(convertedRole);
+        calculateSkillResources(convertedElementType);
         calculateCoreSkillResources();
 
     };
