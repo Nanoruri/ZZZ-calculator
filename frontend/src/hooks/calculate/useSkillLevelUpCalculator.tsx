@@ -15,7 +15,7 @@ export const useSkillUpgradeCalculator = () => {
 
 
     // 🔹 필요 재료 계산 함수
-    const calculateSkillResources = () => {
+    const calculateSkillResources = (elementType: string) => {
         if (goalSkillLevel <= 1) return;
 
         const requiredResources: Record<string, number> = {};
@@ -33,9 +33,13 @@ export const useSkillUpgradeCalculator = () => {
             { start: 11, end: 12, count: 15 },
         ];
 
+        const filteredResources = skillResources.filter(resource =>
+            resource.type.toLowerCase().includes(elementType.toLowerCase())
+        );
+
         for (const { start, end, count } of levelRequirements) {
             if (goalSkillLevel > start) {
-                const resource = skillResources.find(
+                const resource = filteredResources.find(
                     (res) => res.levelRangeStart <= start && res.levelRangeEnd >= end
                 );
 

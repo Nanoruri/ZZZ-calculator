@@ -8,10 +8,14 @@ export const useBreakthroughCalculator = (goalLevel: number) => {
 
     const breakthroughResources = materials.flatMap(material => material.breakthroughResources || []);// 돌파 재료 배열
 
-    const calculateBreakthroughResources = () => {
-        const breakthroughUsage: Record<string, number> = {};
+    const calculateBreakthroughResources = (role: string) => {
 
-        breakthroughResources.forEach(resource => {
+        const breakthroughUsage: Record<string, number> = {};
+        const filteredResources = breakthroughResources.filter(resource =>
+            resource.name.toLowerCase().includes(role.toLowerCase())
+        );
+
+        filteredResources.forEach(resource => {
             const { name, levelRangeStart, levelRangeEnd } = resource;
 
             if (goalLevel > levelRangeStart) {
